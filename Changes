@@ -1,5 +1,13 @@
 Revision history for Sub::Spec::GetArgs::Array
 
+0.02     2011-08-03
+
+         [ENHANCEMENTS]
+
+         - For string arg with arg_greedy=1, returned joined elements (with ' ')
+           instead of an arrayref, for convenience.
+
+
 0.01     2011-07-28
 
          First release.

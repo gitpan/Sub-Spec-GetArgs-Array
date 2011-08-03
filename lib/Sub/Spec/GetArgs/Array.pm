@@ -11,7 +11,7 @@ use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(get_args_from_array);
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 our %SPEC;
 
@@ -88,7 +88,13 @@ sub get_args_from_array {
             my $o = $ah0->{arg_pos};
             if (defined($o) && $o == $i) {
                 if ($ah0->{arg_greedy}) {
-                    $args->{$name} = [splice(@array, $i)];
+                    my $type = $schema->{type};
+                    my @elems = splice(@array, $i);
+                    if ($type eq 'array') {
+                        $args->{$name} = \@elems;
+                    } else {
+                        $args->{$name} = join " ", @elems;
+                    }
                     #$log->tracef("assign %s to arg->{$name}", $args->{$name});
                 } else {
                     $args->{$name} = splice(@array, $i, 1);
@@ -116,7 +122,7 @@ Sub::Spec::GetArgs::Array - Get subroutine arguments from array
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

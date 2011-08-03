@@ -55,7 +55,7 @@ test_getargs(
 
 $spec = {
     args => {
-        arg1 => ['str*' => {arg_pos=>0, arg_greedy=>1}],
+        arg1 => ['array*' => {of=>'str*', arg_pos=>0, arg_greedy=>1}],
     },
 };
 test_getargs(
@@ -67,13 +67,25 @@ test_getargs(
 $spec = {
     args => {
         arg1 => ['str*' => {arg_pos=>0}],
-        arg2 => ['str*' => {arg_pos=>1, arg_greedy=>1}],
+        arg2 => ['array*' => {of=>'str*', arg_pos=>1, arg_greedy=>1}],
     },
 };
 test_getargs(
     name=>'arg_greedy (2)',
     spec=>$spec, array=>[1, 2, 3, 4],
     status=>200, args=>{arg1=>1, arg2=>[2, 3, 4]},
+);
+
+$spec = {
+    args => {
+        arg1 => ['str*' => {arg_pos=>0}],
+        arg2 => ['str*' => {arg_pos=>1, arg_greedy=>1}],
+    },
+};
+test_getargs(
+    name=>'arg_greedy (3, string)',
+    spec=>$spec, array=>[1, 2, 3, 4],
+    status=>200, args=>{arg1=>1, arg2=>"2 3 4"},
 );
 
 DONE_TESTING:
