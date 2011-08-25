@@ -2,7 +2,7 @@ NAME
     Sub::Spec::GetArgs::Array - Get subroutine arguments from array
 
 VERSION
-    version 0.02
+    version 0.03
 
 SYNOPSIS
      use Sub::Spec::GetArgs::Array;
