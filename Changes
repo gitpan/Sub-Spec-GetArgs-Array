@@ -1,5 +1,11 @@
 Revision history for Sub::Spec::GetArgs::Array
 
+0.04     2011-08-31
+
+         No functional changes. Updated because _parse_schema() is moved from
+         Sub::Spec::Utils to Data::Sah::Util.
+
+
 0.03     2011-08-25
 
          No functional changes. Update to Sub::Spec 0.15 (attr_hashes ->
