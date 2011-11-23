@@ -5,18 +5,18 @@ use strict;
 use warnings;
 use Log::Any '$log';
 
-use Data::Sah::Util;
+use Data::Sah;
 
 use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(get_args_from_array);
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 our %SPEC;
 
 sub _parse_schema {
-    Data::Sah::Util::_parse_schema(@_);
+    Data::Sah::normalize_schema($_[0]);
 }
 
 $SPEC{get_args_from_array} = {
@@ -122,7 +122,7 @@ Sub::Spec::GetArgs::Array - Get subroutine arguments from array
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
