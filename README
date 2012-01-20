@@ -2,7 +2,7 @@ NAME
     Sub::Spec::GetArgs::Array - Get subroutine arguments from array
 
 VERSION
-    version 0.05
+    version 0.06
 
 SYNOPSIS
      use Sub::Spec::GetArgs::Array;
@@ -10,6 +10,12 @@ SYNOPSIS
      my $res = get_args_from_array(array=>\@ary, spec=>$spec, ...);
 
 DESCRIPTION
+    NOTICE: This module and the Sub::Spec standard is deprecated as of Jan
+    2012. Rinci is the new specification to replace Sub::Spec, it is about
+    95% compatible with Sub::Spec, but corrects a few issues and is more
+    generic. "Perinci::*" is the Perl implementation for Rinci and many of
+    its modules can handle existing Sub::Spec sub specs.
+
     This module provides get_args_from_array() (and
     gencode_get_args_from_array(), upcoming). This module is used by, among
     others, Sub::Spec::GetArgs::Argv and Sub::Spec::Wrapper.
@@ -62,7 +68,7 @@ AUTHOR
     Steven Haryanto <stevenharyanto@gmail.com>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2011 by Steven Haryanto.
+    This software is copyright (c) 2012 by Steven Haryanto.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.
