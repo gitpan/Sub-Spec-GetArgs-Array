@@ -11,7 +11,7 @@ use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(get_args_from_array);
 
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 our %SPEC;
 
@@ -84,11 +84,11 @@ sub get_args_from_array {
         #$log->tracef("i=$i");
         while (my ($name, $schema) = each %$args_spec) {
             my $schema = $args_spec->{$name};
-            my $ah0 = $schema->{clause_sets}[0];
+            my $ah0 = $schema->[1];
             my $o = $ah0->{arg_pos};
             if (defined($o) && $o == $i) {
                 if ($ah0->{arg_greedy}) {
-                    my $type = $schema->{type};
+                    my $type = $schema->[0];
                     my @elems = splice(@array, $i);
                     if ($type eq 'array') {
                         $args->{$name} = \@elems;
@@ -122,7 +122,7 @@ Sub::Spec::GetArgs::Array - Get subroutine arguments from array
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -149,51 +149,6 @@ This module's functions has L<Sub::Spec> specs.
 =head1 FUNCTIONS
 
 None are exported by default, but they are exportable.
-
-=head2 get_args_from_array(%args) -> [STATUS_CODE, ERR_MSG, RESULT]
-
-
-Get subroutine arguments (%args) from array.
-
-Using information in sub spec's ~args~ clause (particularly the ~arg_pos~ and
-~arg_greedy~ arg type clauses), extract arguments from an array into a hash
-\%args, suitable for passing into subs.
-
-Example:
-
-: my $spec = {
-:     summary => 'Multiply 2 numbers (a & b)',
-:     args => {
-:         a => ['num*' => {arg_pos=>0}],
-:         b => ['num*' => {arg_pos=>1}],
-:     }
-: }
-
-then ~get_args_from_array(array=>[2, 3], spec=>$spec)~ will produce:
-
-: [200, "OK", {a=>2, b=>3}]
-
-Returns a 3-element arrayref. STATUS_CODE is 200 on success, or an error code
-between 3xx-5xx (just like in HTTP). ERR_MSG is a string containing error
-message, RESULT is the actual result.
-
-Arguments (C<*> denotes required arguments):
-
-=over 4
-
-=item * B<allow_extra_elems> => I<bool> (default C<0>)
-
-Allow extra/unassigned elements in array.
-
-If set to 1, then if there are array elements unassigned to one of the arguments
-(due to missing ~arg_pos~, for example), instead of generating an error, the
-function will just ignore them.
-
-=item * B<array>* => I<array>
-
-=item * B<spec>* => I<hash>
-
-=back
 
 =head1 SEE ALSO
 

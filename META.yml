@@ -14,7 +14,7 @@ meta-spec:
   version: 1.4
 name: Sub-Spec-GetArgs-Array
 requires:
-  Data::Sah: 0
+  Data::Sah: 0.02
   Log::Any: 0
   Sub::Spec: 0.15
   Test::More: 0.96
@@ -22,4 +22,4 @@ requires:
 resources:
   homepage: http://search.cpan.org/dist/Sub-Spec-GetArgs-Array/
   repository: http://github.com/sharyanto/perl-Sub-Spec-GetArgs-Array
-version: 0.06
+version: 0.07

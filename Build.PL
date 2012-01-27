@@ -17,13 +17,13 @@ my %module_build_args = (
     "Steven Haryanto <stevenharyanto\@gmail.com>"
   ],
   "dist_name" => "Sub-Spec-GetArgs-Array",
-  "dist_version" => "0.06",
+  "dist_version" => "0.07",
   "license" => "perl",
   "module_name" => "Sub::Spec::GetArgs::Array",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
-    "Data::Sah" => 0,
+    "Data::Sah" => "0.02",
     "Log::Any" => 0,
     "Sub::Spec" => "0.15",
     "Test::More" => "0.96",
